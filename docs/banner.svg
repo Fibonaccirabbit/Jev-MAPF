@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#00f0ff" stroke-opacity=".07"/>
+    </pattern>
+    <radialGradient id="c1" cx="18%" cy="0%" r="60%"><stop offset="0" stop-color="#00f0ff" stop-opacity=".22"/><stop offset="1" stop-color="#00f0ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="c2" cx="100%" cy="30%" r="55%"><stop offset="0" stop-color="#ff2bd6" stop-opacity=".2"/><stop offset="1" stop-color="#ff2bd6" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="260" rx="18" fill="#04050d"/>
+  <rect width="1200" height="260" rx="18" fill="url(#grid)"/>
+  <rect width="1200" height="260" rx="18" fill="url(#c1)"/>
+  <rect width="1200" height="260" rx="18" fill="url(#c2)"/>
+
+  <!-- agent trails -->
+  <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".55" filter="url(#soft)">
+    <polyline points="800,64 864,64 864,128 960,128 960,192" stroke="#00f0ff"/>
+    <polyline points="1120,64 1056,64 1056,160 992,160" stroke="#ff2bd6"/>
+    <polyline points="1008,236 928,236 928,160" stroke="#a6ff00"/>
+    <polyline points="1136,208 1088,208 1088,112" stroke="#ffb400"/>
+  </g>
+  <g stroke-width="2" stroke-dasharray="5 4" fill="none" filter="url(#soft)">
+    <rect x="945" y="177" width="30" height="30" rx="5" stroke="#00f0ff"/>
+    <rect x="977" y="145" width="30" height="30" rx="5" stroke="#ff2bd6"/>
+    <rect x="913" y="145" width="30" height="30" rx="5" stroke="#a6ff00"/>
+    <rect x="1073" y="97" width="30" height="30" rx="5" stroke="#ffb400"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-weight="700" font-size="15" text-anchor="middle" filter="url(#soft)">
+    <circle cx="960" cy="192" r="15" fill="#04050d" stroke="#00f0ff" stroke-width="3"/><text x="960" y="197" fill="#00f0ff">0</text>
+    <circle cx="992" cy="160" r="15" fill="#04050d" stroke="#ff2bd6" stroke-width="3"/><text x="992" y="165" fill="#ff2bd6">1</text>
+    <circle cx="928" cy="160" r="15" fill="#04050d" stroke="#a6ff00" stroke-width="3"/><text x="928" y="165" fill="#a6ff00">2</text>
+    <circle cx="1088" cy="112" r="15" fill="#04050d" stroke="#ffb400" stroke-width="3"/><text x="1088" y="117" fill="#ffb400">3</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <text x="64" y="128" font-size="72" font-weight="800" letter-spacing="8" fill="#00f0ff" filter="url(#glow)">JEV<tspan fill="#ff2bd6">//</tspan>MAPF</text>
+    <text x="68" y="170" font-size="18" letter-spacing="3" fill="#8fa3d9">DECENTRALIZED LLM AGENTS · MULTI-AGENT PATH FINDING</text>
+    <text x="68" y="206" font-size="14" letter-spacing="2" fill="#5b6a99">local sensing ▸ radio ▸ cooperative planning ▸ one model call per robot per tick</text>
+  </g>
+</svg>

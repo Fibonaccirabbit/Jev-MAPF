@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEV // MAPF</title>
+<link rel="stylesheet" href="/static/style.css?v=4">
+</head>
+<body>
+<header class="bar">
+  <div class="logo">JEV<span>//</span>MAPF</div>
+  <nav id="models" class="models" aria-label="模型">
+    <button data-provider="deepseek">DeepSeek</button>
+    <button data-provider="jev">Jev</button>
+    <button data-provider="qwen_rlcd">Qwen·RLCD</button>
+    <button data-provider="chat">OpenAI 兼容</button>
+    <button data-provider="astar">A*</button>
+    <button data-provider="random">随机</button>
+  </nav>
+  <select id="provider" hidden><option value="astar">astar</option><option value="random">random</option><option value="deepseek">deepseek</option><option value="chat">chat</option><option value="qwen_rlcd">qwen_rlcd</option><option value="jev">jev</option></select>
+  <button id="open-connection" class="icon" title="连接">⚙</button>
+  <span id="status" class="status">—</span>
+</header>
+
+<main inert>
+  <section class="stage">
+    <div class="config">
+      <label>地图<select id="case"></select></label>
+      <label>智能体<input id="num-agents" type="number" value="4" min="1" max="16"></label>
+      <label>种子<input id="seed" type="number" value="42" min="0"></label>
+      <label>步数<input id="max-steps" type="number" value="32" min="1" max="256"></label>
+      <label>视野<input id="obs-radius" type="number" value="3" min="1" max="5"></label>
+      <label class="toggle"><input id="coop-planner" type="checkbox"><span>协作规划</span></label>
+    </div>
+    <div class="arena">
+      <div class="arena-head"><h1 id="run-title">—</h1><span id="adapter-version"></span></div>
+      <svg id="grid" role="img" aria-label="现场" viewBox="0 0 600 600"></svg>
+      <div id="legend" class="legend"></div>
+    </div>
+    <div class="transport">
+      <button id="run" class="primary" disabled>▶ 运行</button>
+      <button id="step" disabled>⏭ 单步</button>
+      <button id="pause" disabled>⏸</button>
+      <button id="stop" disabled>⏹</button>
+      <button id="reset">↺ 新建</button>
+      <button id="play" title="播放 / 暂停回放">▶ 播放</button>
+      <button id="speed" title="播放速度">1×</button>
+      <span id="frame-label" class="mono">T 0</span>
+      <input id="timeline" type="range" min="0" max="0" value="0" aria-label="时间轴">
+      <button id="live" title="回到实时">● LIVE</button>
+    </div>
+    <div class="metrics">
+      <div><span>CSR</span><strong id="csr">—</strong></div>
+      <div><span>ISR</span><strong id="isr">—</strong></div>
+      <div><span>步数</span><strong id="steps">0</strong></div>
+      <div><span>SoC / MS</span><strong id="cost">—</strong></div>
+      <div><span>调用</span><strong id="calls">0</strong></div>
+      <div><span>Tokens</span><strong id="tokens">0</strong></div>
+    </div>
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  </section>
+
+  <aside class="decisions">
+    <div class="panel-head">
+      <h2>决策</h2>
+      <div class="speed"><span id="tick-label" class="mono">—</span><strong id="wall-ms">—</strong><span>ms / 步</span></div>
+    </div>
+    <svg id="spark" class="spark" viewBox="0 0 300 44" preserveAspectRatio="none"></svg>
+    <div id="agents" class="agents"></div>
+    <details class="raw"><summary>原始输入 / 请求</summary>
+      <label>智能体<select id="agent-view"><option value="0">0</option></select></label>
+      <pre id="input">{}</pre><pre id="trace">{}</pre>
+    </details>
+  </aside>
+
+  <section class="presets">
+    <div class="panel-head"><h2>回放</h2>
+      <div class="more"><select id="saved-runs"><option value="">全部记录</option></select><button id="open-saved">打开</button><button id="export" disabled>导出</button></div>
+    </div>
+    <div id="preset-list" class="preset-list"></div>
+  </section>
+</main>
+
+<dialog id="connection">
+  <form method="dialog" class="conn">
+    <h2>连接 <small id="verified"></small></h2>
+    <label>地址<input id="url" type="url" spellcheck="false"></label>
+    <label>模型<input id="model" spellcheck="false"></label>
+    <div class="row">
+      <label>思考<select id="thinking"><option value="false">关闭</option><option value="true">low</option></select></label>
+      <label>Token 预算<input id="max-tokens" type="number" min="256" max="16384" value="1024"></label>
+    </div>
+    <label>API Key<input id="key" type="password" autocomplete="off"></label>
+    <div class="row">
+      <button type="button" id="save-connection">保存</button>
+      <button type="button" id="test-connection">测试</button>
+      <button type="button" id="import-deepseek">读取钥匙串</button>
+      <button value="close">关闭</button>
+    </div>
+  </form>
+</dialog>
+<script type="module" src="/static/app.js?v=4"></script>
+</body>
+</html>

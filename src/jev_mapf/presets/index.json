@@ -1,0 +1,38 @@
+[
+ {
+  "name": "ds-coop-puzzle00",
+  "title": "DeepSeek × 协作 · puzzle-00"
+ },
+ {
+  "name": "ds-coop-puzzle07",
+  "title": "DeepSeek × 协作 · puzzle-07"
+ },
+ {
+  "name": "jev-coop-puzzle15",
+  "title": "Jev × 协作 · puzzle-15"
+ },
+ {
+  "name": "jev-coop-puzzle09",
+  "title": "Jev × 协作 · puzzle-09"
+ },
+ {
+  "name": "jev-solo-puzzle03",
+  "title": "Jev 独立 · puzzle-03"
+ },
+ {
+  "name": "ds-solo-puzzle03",
+  "title": "DeepSeek 独立 · puzzle-03"
+ },
+ {
+  "name": "ds-solo-puzzle07",
+  "title": "DeepSeek 独立 · puzzle-07 · 死锁"
+ },
+ {
+  "name": "astar-puzzle00",
+  "title": "A* · puzzle-00 · 死锁"
+ },
+ {
+  "name": "jev-coop-puzzle00",
+  "title": "Jev × 协作 · puzzle-00"
+ }
+]
